@@ -1,0 +1,7 @@
+{
+    "login_page":{
+        "label_username":"Username",
+        "label_password":"Password",
+        "label_button":"Sign In"
+    }
+}

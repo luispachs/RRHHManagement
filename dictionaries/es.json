@@ -1,0 +1,7 @@
+{
+    "login_page":{
+        "label_username":"Nombre de usuario",
+        "label_password":"Contraseña",
+        "label_button":"Inicia Sesión"
+    }
+}
