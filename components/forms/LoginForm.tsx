@@ -5,7 +5,7 @@ export default function LoginForm(params:{dictionary:any}){
 
     return (
 
-        <form >
+        <form className={styles.form}>
             <article className={styles.form__acticle__form_groups} >
                 <input type='text' placeholder={params.dictionary.label_username}/>
             </article>

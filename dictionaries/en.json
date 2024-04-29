@@ -2,6 +2,7 @@
     "login_page":{
         "label_username":"Username",
         "label_password":"Password",
-        "label_button":"Sign In"
+        "label_button":"Sign In",
+        "title":"Welcome to Tani"
     }
 }

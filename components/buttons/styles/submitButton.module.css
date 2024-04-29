@@ -1,0 +1,13 @@
+.button{
+    width: 80%;
+    background-color: var(--accent-secondary);
+    height: 3vw;
+    border-radius: 0.5rem;
+    font-size: medium;
+    font-weight: 600;
+    box-shadow: none;
+}
+.button:hover{
+    transition: box-shadow 1s ease 0;
+    box-shadow: 0 0 2px 1px var(--accent-primary);
+}

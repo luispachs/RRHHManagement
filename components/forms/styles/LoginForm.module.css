@@ -3,10 +3,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    height: 30vh;
+    border-radius: 0.5rem;
+    background-color: var(--bg-secondary);
+
 }
 .form__acticle__form_groups{
     display: flex;
     flex-direction: column;
     width: 80%;
     align-items: center;
+    margin-top:1rem;
+    margin-bottom:1rem; 
+    background-color: var(--bg-secondary);
+
+}
+.form__acticle__form_groups>input{
+    padding-top:5%;
+    padding-bottom: 5%;
+    text-align: center;
+    border-radius: 0.5rem;
+    width: 90%;
+}
+
+.form__acticle__form_groups>input::placeholder{
+    text-align: center;
+}
+.form__acticle__form_groups>input:focus{
+    outline: none;
 }
