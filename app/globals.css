@@ -11,6 +11,7 @@
   --accent-secondary:#308C47; 
   --text-primary:#000000;
   --text-secondary:#ffffff;
+  --text-off:#6b8b73;
 }
 
 @media (prefers-color-scheme:dark){
@@ -21,7 +22,8 @@
     --accent-primary:#02735E;
     --accent-secondary:#038C65; 
     --text-primary:#ffffff;
-    --text-secondary:#000000
+    --text-secondary:#000000;
+    --text-off:#6b8b73;
   }
 
 }

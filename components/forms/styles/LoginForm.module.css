@@ -9,6 +9,7 @@
     height: 30vh;
     border-radius: 0.5rem;
     background-color: var(--bg-secondary);
+    height: fit-content;
 
 }
 .form__acticle__form_groups{
@@ -34,4 +35,18 @@
 }
 .form__acticle__form_groups>input:focus{
     outline: none;
+}
+.title{
+    text-align: center;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+
+@media only screen and  (max-width:480px) {
+    
+}
+
+@media only screen and  (max-width:1200px) and (min-width: 480px){
+    
 }

@@ -7,6 +7,9 @@ export default function LoginForm(params:{dictionary:any}){
 
         <form className={styles.form}>
             <article className={styles.form__acticle__form_groups} >
+                <h1 className={styles.title}>{params.dictionary.label_sign_up}</h1>
+            </article>
+            <article className={styles.form__acticle__form_groups} >
                 <input type='text' placeholder={params.dictionary.label_username}/>
             </article>
             <article className={styles.form__acticle__form_groups} >
