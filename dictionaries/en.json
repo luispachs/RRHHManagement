@@ -4,11 +4,15 @@
         "label_password":"Password",
         "label_button":"Sign In",
         "title":"Welcome to Tani",
-        "label_sign_up": "Sign Up"
+        "label_sign_up": "Sign Up",
+        "recovery_password":"Forgot your password?"
     },
     "recovery_password_page":{
         "title":"You have forgotten your password, Enter your email to retrieve it",
         "label_email": "Email",
         "submit_label": "Retrieve"
+    },
+    "errors":{
+        "label_submit_error":"The ##field## field is empty"
     }
 }

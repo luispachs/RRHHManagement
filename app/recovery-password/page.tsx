@@ -13,7 +13,7 @@ export default async function Page(){
     const dictionary = await getDictionary(currentLang);
     return (
         <main className={style.container}>
-            <RecoveryPasswordForm dictionary={dictionary.recovery_password_page}/>
+            <RecoveryPasswordForm dictionary={dictionary}/>
         </main>
     );
 }

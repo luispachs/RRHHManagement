@@ -11,3 +11,41 @@
     transition: box-shadow 1s ease 0;
     box-shadow: 0 0 2px 1px var(--accent-primary);
 }
+.no_error{
+    display: none;
+}
+
+.error{
+    background-color: var(--bg-error);
+    border: 1px solid var(--border-error);
+    color: var(--text-primary);
+    width: 80%;
+    border-radius: 0.125rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+@media only screen and ( max-width:480px){
+    .button{
+        width: 80%;
+        background-color: var(--accent-secondary);
+        height: 12vw;
+        border-radius: 0.5rem;
+        font-size: medium;
+        font-weight: 600;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (max-width:1200px) and (min-width:480px){
+    .button{
+        width: 80%;
+        background-color: var(--accent-secondary);
+        height: 5vw;
+        border-radius: 0.5rem;
+        font-size: medium;
+        font-weight: 600;
+        box-shadow: none;
+    }
+}

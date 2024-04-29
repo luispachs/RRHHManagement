@@ -4,12 +4,15 @@
         "label_password":"Contraseña",
         "label_button":"Inicia Sesión",
         "title":"Bienvenidos a Tani",
-        "label_sign_up": "Sign Up"
-
+        "label_sign_up": "Sign Up",
+        "recovery_password":"¿Has olvidado tu contraseña?"
     },
     "recovery_password_page":{
         "title":"Has olvidado tu contraseña, Ingresa tu email para recuperarla",
         "label_email": "Email",
         "submit_label": "Recuperar"
+    },
+    "errors":{
+        "label_submit_error":"El campo ##field## se encuentra vacio"
     }
 }

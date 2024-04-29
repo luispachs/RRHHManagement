@@ -30,7 +30,7 @@ export default async function Home() {
             </section>
         </aside>
         <section className={"container " + styles.section__login}>
-          <LoginForm dictionary={dictionary.login_page}/>
+          <LoginForm dictionary={dictionary}/>
         </section>
    </main>
    

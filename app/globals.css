@@ -12,6 +12,8 @@
   --text-primary:#000000;
   --text-secondary:#ffffff;
   --text-off:#6b8b73;
+  --bg-error: #f19c9c;
+  --border-error:#f02727;
 }
 
 @media (prefers-color-scheme:dark){
@@ -24,6 +26,8 @@
     --text-primary:#ffffff;
     --text-secondary:#000000;
     --text-off:#6b8b73;
+    --bg-error: #f19c9c;
+    --border-error:#f02727;
   }
 
 }
