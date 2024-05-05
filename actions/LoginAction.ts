@@ -32,7 +32,6 @@ export default async function Action(state:any,formData:FormData){
 
     if(user==null){
         return {status:400,message:dictionary.login_page.login_error} as FormActionState;
-
     }
 
 
