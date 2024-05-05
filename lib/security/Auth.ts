@@ -1,3 +1,4 @@
+import jose from 'jose'
 export default class Auth{
 
 

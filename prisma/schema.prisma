@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -20,6 +21,8 @@ model users {
   lastname String @db.VarChar(50)
   fullname String @db.VarChar(120)
   password String @db.VarChar(300)
+  email String @db.VarChar(100)
+  username String @db.VarChar(50)
   role roles @relation(fields: [roleId] , references: [id])
   roleId Int
 }

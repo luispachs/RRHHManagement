@@ -7,13 +7,12 @@ import LoginAction from '@/actions/LoginAction';
 import { FormActionState } from '@/types/FormActionState';
 export default function LoginForm(params:{dictionary:any}){
 
-    const action = LoginAction.bind(null);
+    
     let initialState:FormActionState ={
         status:null,
         message:null,
-        className:styles.none
     }
-    const [formActionState,formAction] =useFormState(action,initialState);
+    const [formActionState,formAction] =useFormState(LoginAction,initialState);
 
     return (
 
@@ -22,10 +21,10 @@ export default function LoginForm(params:{dictionary:any}){
                 <h1 className={styles.title}>{params.dictionary.login_page.label_sign_up}</h1>
             </article>
             <article className={styles.form__acticle__form_groups} >
-                <input type='text' placeholder={params.dictionary.login_page.label_username}/>
+                <input type='text' placeholder={params.dictionary.login_page.label_username} name='username' id='username'/>
             </article>
             <article className={styles.form__acticle__form_groups} >
-                <input type='password' placeholder={params.dictionary.login_page.label_password}/>
+                <input type='password' placeholder={params.dictionary.login_page.label_password} name='password' id='password'/>
             </article>
             <article className={styles.form__acticle__form_groups} >
                 <SubmitButton label={params.dictionary.login_page.label_button} error={params.dictionary.errors.label_submit_error}/>
