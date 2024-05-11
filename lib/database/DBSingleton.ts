@@ -2,10 +2,9 @@ import { Pool } from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@prisma/client'
 
+class DBSingleton{
 
-export class DBSingleton{
-
-    static getInstance():PrismaClient<any>{
+    getInstance():PrismaClient<any>{
         let instance = null;
 
         if( instance == null){
@@ -21,3 +20,10 @@ export class DBSingleton{
         return instance
     }
 }
+
+
+const client = new DBSingleton();
+
+Object.freeze(client);
+
+export default client;

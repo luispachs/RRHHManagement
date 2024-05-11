@@ -1,9 +1,8 @@
-import { DBSingleton } from "./DBSingleton";
+import DBSingleton  from "./DBSingleton";
 
 export class connnection{
     
     client(){
-
-        return DBSingleton.getInstance();
+        return  DBSingleton.getInstance();
     }
 }

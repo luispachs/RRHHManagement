@@ -1,10 +1,15 @@
 'use server'
-import { FormActionState } from "@/types/FormActionState";
+import { FormActionState } from "@/types/ActionsState/FormActionState";
 import { LoginSchema } from "@/definitions/LoginSchema";
 import { getDictionary } from "@/dictionaries/dictionaries";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import UserRepository from "@/repositories/UserRepository";
+import { User } from "@/types/Models/user";
+import {Auth} from "@/lib/security/Auth";
+
 export default async function Action(state:any,formData:FormData){
+    const headersList = headers();
+    console.log(headersList);
     const cookiesList =cookies();
     let currentLang = 'es';
     if(cookiesList.has('_locale')){
@@ -28,9 +33,15 @@ export default async function Action(state:any,formData:FormData){
     }
     const userRepository = new UserRepository();
 
-    let user = userRepository.getByUsername(username) ;
+    let user:User|null = await  userRepository.getByUsername(username) ;
 
     if(user==null){
+        return {status:400,message:dictionary.login_page.login_error} as FormActionState;
+    }
+
+    let validate = await Auth.auth(user,validations.data.password,);
+    
+    if(validate){
         return {status:400,message:dictionary.login_page.login_error} as FormActionState;
     }
 

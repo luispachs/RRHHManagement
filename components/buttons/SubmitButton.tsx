@@ -13,9 +13,11 @@ export default function SubmitButton(params:{label:string;error:string}){
         for(let i=0;i<= inputs.length-1;i++){
            let elem = inputs[i];
            if(elem.value == null || elem.value == undefined || elem.value == ""){
-            let err = params.error.replace("##field##",elem.name);
+                if(elem.type != 'hidden'){
+                    let err = params.error.replace("##field##",elem.name);
               
-            throw new TypeError(err);
+                    throw new TypeError(err);
+                }
            }
            
         }
