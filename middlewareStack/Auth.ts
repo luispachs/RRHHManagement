@@ -7,6 +7,10 @@ export default async function Auth(request:NextRequest,response:NextResponse,Sta
                 if(!cookieList.has('session')){
                         return NextResponse.redirect('/')
                 }
+
+                const session = cookieList.get('session')?.value;
+                
+
         }else{
                 if(Stack.length == next+1){
                         return response;
