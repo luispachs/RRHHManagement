@@ -21,9 +21,9 @@ export class Session{
         await this.#client.connect();
     }
 
-    async  generate(user:User):Promise<string>{
+    async  generate(user:User,ip:string):Promise<string>{
         await this.#connect();
-        const dataToHash = `${user.id}-${user.email}-${new Date().toString()}`;
+        const dataToHash = `${user.id}-${user.email}-${ip}`;
         const salt = bcrypt.genSaltSync(parseInt(process.env.SALT  as string));
         const hash = bcrypt.hashSync(dataToHash,salt)
 
@@ -34,12 +34,26 @@ export class Session{
         return hash;
     }
 
-    async validate(session:string):Promise<boolean>{
-
-        this.#client.get(session);
-
-        return false;
+    async validate(session:string,ip:string):Promise<User|null>{
+        await this.#connect();
+        const data=await this.#client.get(session);
+        if(data===null){
+            return null;
+        }
+        const user = JSON.parse(data);
+        const dataToHash = `${user.id}-${user.email}-${ip}`;
+        const isValid = bcrypt.compareSync(dataToHash,session);
+        
+        if(!isValid){
+            return null;
+        }
+        
+        this.#client.expire(session,(parseInt(process.env.SESSION_EXPIRE as string) * 60));
+        
+         return JSON.parse(data);
+        
     }
+
 
 
 

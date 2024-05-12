@@ -14,7 +14,7 @@ export  class Auth{
        }
        let sessionInstance = new Session();
        const token =  await Auth.JWT(user,ip);
-       const sessionId = await sessionInstance.generate(user) as string;
+       const sessionId = await sessionInstance.generate(user,ip) as string;
         return {status:200,session:sessionId,token:token}
     }
 

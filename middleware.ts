@@ -1,3 +1,4 @@
+'use server'
 import { NextRequest, NextResponse } from "next/server";
 import Stack from "./middlewareStack/Stack";
 import { cookies } from "next/headers";
