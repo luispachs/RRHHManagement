@@ -34,8 +34,11 @@ export class Session{
         return hash;
     }
 
-    validate(session:string){
+    async validate(session:string):Promise<boolean>{
 
+        this.#client.get(session);
+
+        return false;
     }
 
 

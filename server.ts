@@ -1,4 +1,5 @@
 import next from "next";
+import { headers } from "next/headers";
 import {createServer} from 'node:http';
 import { Server } from "socket.io";
 
@@ -10,8 +11,9 @@ const app = next({ dev, hostname, port });
 const handler = app.getRequestHandler();
 
 app.prepare().then(() => {
+  
   const httpServer = createServer(handler);
-
+  
   const io = new Server(httpServer);
 
   io.on("connection", (socket) => {

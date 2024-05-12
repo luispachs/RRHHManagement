@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stack from "./middlewareStack/Stack";
+import { cookies } from "next/headers";
 
 export async function middleware(request:NextRequest){
+   
    let response = NextResponse.next();
-   if(!request.cookies.has('__locale')){
-        response.cookies.set('_locale','en');
+   if(!request.cookies.has('_locale')){
+       response.cookies.set('_locale','en');
    }
-
+   
    return await  Stack(request,response)
 }
 

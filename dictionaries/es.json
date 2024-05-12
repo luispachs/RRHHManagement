@@ -6,7 +6,8 @@
         "title":"Bienvenidos a Tani",
         "label_sign_up": "Sign Up",
         "recovery_password":"¿Has olvidado tu contraseña?",
-        "login_error": "Usuario o contraseña son invalidos"
+        "login_error": "Usuario o contraseña son invalidos",
+        "login_authorize": "Autorizado"
     },
     "recovery_password_page":{
         "title":"Has olvidado tu contraseña, Ingresa tu email para recuperarla",
@@ -14,6 +15,7 @@
         "submit_label": "Recuperar"
     },
     "errors":{
-        "label_submit_error":"El campo ##field## se encuentra vacio"
+        "label_submit_error":"El campo ##field## se encuentra vacio",
+        "exception_500": "Ha ocurrido un error inesperado, por favor contacte con el administrador."
     }
 }

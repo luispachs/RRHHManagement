@@ -21,7 +21,7 @@ export default function SubmitButton(params:{label:string;error:string}){
            }
            
         }
-        document.getElementsByTagName('form')[0].requestSubmit();
+        document.getElementsByTagName('form').item(0)!.requestSubmit();
         }
         catch(error:any){
             setError({message:error.message,className:styles.error})

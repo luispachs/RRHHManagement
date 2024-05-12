@@ -18,6 +18,17 @@
 .none{
     display: none;
 }
+.error{
+    background-color: rgb(248, 170, 170);
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.error>p{
+    color:var(--text-primary);
+    text-align: center;
+}
 .form__acticle__form_groups{
     display: flex;
     flex-direction: column;
