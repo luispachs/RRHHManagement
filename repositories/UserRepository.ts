@@ -1,6 +1,7 @@
 import { connnection } from "@/lib/database/connection";
 import { RepositoryInterface } from "./RepositoryInterface";
 import { User } from "@/types/Models/user";
+import { Cache } from "@/lib/Cache/Cache";
 
 export default class UserRepository extends connnection implements RepositoryInterface{
     
@@ -28,12 +29,28 @@ export default class UserRepository extends connnection implements RepositoryInt
     async delete(data:number): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    async getByUsername(value:string){
-        return this.client().users.findFirst({
+    async getByUsername(value:string,useCache:boolean=true){
+        const key = `GetUserByUsername_${value}`;
+        let user = null;
+        if(useCache){
+            user =await Cache.get(key);
+            
+
+            if(user!=null){
+                return user;
+            }
+        }
+
+
+        user=await this.client().users.findFirst({
             where:{
                 username:value
             }
         });
+
+        user =await Cache.put(key,user,600);
+        
+        return user;
     }
 
 }

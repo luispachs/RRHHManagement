@@ -12,7 +12,9 @@
     "recovery_password_page":{
         "title":"Has olvidado tu contraseña, Ingresa tu email para recuperarla",
         "label_email": "Email",
-        "submit_label": "Recuperar"
+        "submit_label": "Recuperar",
+        "successfull_message":"Hemos enviado un correo electrónico de recuperación al email suministrado.",
+        "invalid_format_email":"El formato del email es incorrecto"
     },
     "errors":{
         "label_submit_error":"El campo ##field## se encuentra vacio",
