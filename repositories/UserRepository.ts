@@ -47,10 +47,29 @@ export default class UserRepository extends connnection implements RepositoryInt
                 username:value
             }
         });
+ 
+        return await Cache.put(key,user,600);
+    }
 
-        user =await Cache.put(key,user,600);
-        
-        return user;
+    async getUserByEmail(email:string,useCache:boolean =true){
+
+        const key = `GetUserByEmail_${email}`;
+
+        let user =null;
+        if(useCache){
+            user=await Cache.get(key);
+            if(user!=null){
+                return user;
+            }
+        }
+
+        user = await this.client().users.findFirst({
+            where:{
+                email:email
+            }
+        });
+
+       return await  Cache.put(key,user,300);
     }
 
 }
