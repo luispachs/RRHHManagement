@@ -25,9 +25,24 @@ model users {
   username String @db.VarChar(50)
   role roles @relation(fields: [roleId] , references: [id])
   roleId Int
+  tokens tokens[]
 }
 model roles {
   id Int @id @default(autoincrement()) 
   name String @db.VarChar(100)
   users users[]
+}
+
+model tokens {
+  id Int @id @default(autoincrement())
+  token String @db.VarChar(250)
+  expire DateTime @db.Timestamp() @default(now())
+  userId Int
+  user users @relation(fields: [userId], references: [id])
+  status token_status @default(ACTIVE)
+}
+
+enum token_status{
+  ACTIVE
+  INACTIVE
 }

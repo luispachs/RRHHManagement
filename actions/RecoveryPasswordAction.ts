@@ -7,6 +7,8 @@ import UserRepository from "@/repositories/UserRepository";
 import rrhhLoger from "@/lib/logger/RRHHLogger";
 import { TokenGenerator } from "@/lib/security/TokenGenerator";
 import { User } from "@/types/Models/user";
+import { TokenRepository } from "@/repositories/TokenRepository";
+import { Token } from "@/types/Models/token";
 export default async function Action(state:any,formData:FormData){
     const cookiesList = cookies();
     let lang = 'en';
@@ -29,10 +31,21 @@ try{
     if(user == null){
         return {status:200,message:dictionary.recovery_password_page.successfull_message};
     }
-    
-    let tokenString = TokenGenerator.generate(`${user.email}_${new Date().toString}_${user.id}`);
 
-    
+    let currentDate = new Date();
+    currentDate.setMinutes((currentDate.getMinutes() + 10));
+  
+    let tokenString = TokenGenerator.generate(`${user.email}_${new Date().toString}_${user.id}`);
+    let tokenRepositeory = new TokenRepository();
+    await tokenRepositeory.DeactivateTokenByUser(user);
+    const tokenOBject:Token = {
+        token:tokenString,
+        expire: currentDate.toISOString(),
+        userId:user.id!,
+        status:'ACTIVE'
+    }
+    const token = await tokenRepositeory.create(tokenOBject);
+        
 
     return {status:200,message: dictionary.recovery_password_page.successfull_message} as RecoveryPasswordState;
 }catch(error){
