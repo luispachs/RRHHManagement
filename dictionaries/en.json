@@ -14,7 +14,9 @@
         "label_email": "Email",
         "submit_label": "Retrieve",
         "successfull_message":"We have sent a recovery email to the email provided.",
-        "invalid_format_email":"The email format is incorrect"
+        "invalid_format_email":"The email format is incorrect",
+        "mail_subject":"You have forgotten your password"
+
     },
     "errors":{
         "label_submit_error":"The ##field## field is empty",

@@ -13,7 +13,7 @@ class Client{
             secure,
             auth:{
                 user,
-                password
+                pass:password
             }
         }
 

@@ -9,6 +9,7 @@ import { TokenGenerator } from "@/lib/security/TokenGenerator";
 import { User } from "@/types/Models/user";
 import { TokenRepository } from "@/repositories/TokenRepository";
 import { Token } from "@/types/Models/token";
+import { RecoveryPasswordMail } from "@/lib/mail/mails/RecoveryPasswordMail";
 export default async function Action(state:any,formData:FormData){
     const cookiesList = cookies();
     let lang = 'en';
@@ -45,7 +46,20 @@ try{
         status:'ACTIVE'
     }
     const token = await tokenRepositeory.create(tokenOBject);
-        
+    const mailer =new RecoveryPasswordMail(lang);  
+
+    mailer.setData("link",`${process.env.BASE_HOST}/recovery-password/${token.token}`);
+    const sender = process.env.USER_MAILER;
+    if(sender== undefined){
+        throw Error("sender email can't be undefined");
+    }
+    await mailer.send({
+        from:sender,
+        to:user.email,
+        subject:dictionary.recovery_password_page.mail_subject,
+        text: dictionary.recovery_password_page.mail_subject,
+        html:mailer.content!
+    });
 
     return {status:200,message: dictionary.recovery_password_page.successfull_message} as RecoveryPasswordState;
 }catch(error){
