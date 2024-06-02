@@ -1,7 +1,7 @@
 'use server';
 import { RecoveryPasswordSchema } from "@/definitions/RecoveryPasswordSchema";
 import { RecoveryPasswordState } from "@/types/ActionsState/RecoveryPasswordState";
-import { getDictionary } from "@/dictionaries/dictionaries";
+import { getDictionary } from "@/lib/facade/Dictionary";
 import { cookies } from "next/headers";
 import UserRepository from "@/repositories/UserRepository";
 import rrhhLoger from "@/lib/logger/RRHHLogger";
@@ -13,11 +13,12 @@ import { RecoveryPasswordMail } from "@/lib/mail/mails/RecoveryPasswordMail";
 export default async function Action(state:any,formData:FormData){
     const cookiesList = cookies();
     let lang = 'en';
-    if(!cookiesList.has('_locale')){
-        lang =cookiesList.get('_locale')!.valueOf() as string;
+    if(cookiesList.has('_locale')){
+        lang =cookiesList.get('_locale')!.value as string;
     }
     const userEmail = formData.get('email')!.valueOf() as string;
-    const dictionary = await getDictionary('es');
+    const dictionary = await getDictionary();
+
 try{
     const validation = RecoveryPasswordSchema.safeParse({email:userEmail});
 
@@ -46,6 +47,7 @@ try{
         status:'ACTIVE'
     }
     const token = await tokenRepositeory.create(tokenOBject);
+    
     const mailer =new RecoveryPasswordMail(lang);  
 
     mailer.setData("link",`${process.env.BASE_HOST}/recovery-password/${token.token}`);

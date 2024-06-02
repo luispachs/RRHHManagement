@@ -1,16 +1,10 @@
 import { cookies } from 'next/headers';
 import style from './recovery-password.module.css';
 import RecoveryPasswordForm from '@/components/forms/RecoveryPasswordForm';
-import { getDictionary } from '@/dictionaries/dictionaries';
+import { getDictionary } from '@/lib/facade/Dictionary';
 export default async function Page(){
-    const cookiesList = cookies();
-
-    let currentLang = 'en';
-    if( cookiesList.has('_locale')){
-        currentLang= cookiesList.get('_locale')?.value as string;
-    }
-
-    const dictionary = await getDictionary(currentLang);
+  
+    const dictionary = await getDictionary();
     return (
         <main className={style.container}>
             <RecoveryPasswordForm dictionary={dictionary}/>

@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import styles from "@/app/home.module.css";
 import LoginForm from "@/components/forms/LoginForm";
-import { getDictionary } from "@/dictionaries/dictionaries";
-import { cookies } from "next/headers";
+import { getDictionary } from "@/lib/facade/Dictionary";
 import Image from "next/image";
 import loginImage from '@/public/images/login_page_image_without_bg.png'
 export const metadata:Metadata = {
@@ -11,12 +10,8 @@ export const metadata:Metadata = {
 }
 
 export default async function Home() {
-  const cookiesList = cookies()
-  let currentlanguaje ="en";
-  if(cookiesList.has('_locale')){
-    currentlanguaje = cookiesList.get('_locale')!.value;
-  }
-  const dictionary = await getDictionary(currentlanguaje); 
+  
+  const dictionary = await getDictionary(); 
 
   return (
    

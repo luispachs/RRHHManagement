@@ -1,22 +1,18 @@
 'use server'
 import { FormActionState } from "@/types/ActionsState/FormActionState";
 import { LoginSchema } from "@/definitions/LoginSchema";
-import { getDictionary } from "@/dictionaries/dictionaries";
-import { cookies, headers } from "next/headers";
+import { getDictionary } from "@/lib/facade/Dictionary";
 import UserRepository from "@/repositories/UserRepository";
 import { User } from "@/types/Models/user";
 import {Auth} from "@/lib/security/Auth";
 import rrhhLoger from "@/lib/logger/RRHHLogger";
+import { headers,cookies } from "next/headers";
 
 export default async function Action(state:any,formData:FormData){
         const headersList = headers();
         const ip= headersList.get('x-forwarded-for')?.valueOf() as  string; 
-        const cookiesList =cookies();
-        let currentLang = 'es';
-        if(cookiesList.has('_locale')){
-            let currentLang= cookiesList.get('_locale');
-        }
-        const dictionary = await getDictionary(currentLang);
+    
+        const dictionary = await getDictionary();
     try{
        
         let username = formData.get('username')?.valueOf() as string;
