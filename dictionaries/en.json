@@ -20,6 +20,10 @@
     },
     "errors":{
         "label_submit_error":"The ##field## field is empty",
-        "exception_500": "An unexpected error has occurred, please contact the administrator."
+        "exception_500": "An unexpected error has occurred, please contact the administrator.",
+        "not_equals_password": "The passwords aren't equals",
+        "all_field_are_require": "All fields are required"
+
+
     }
 }
